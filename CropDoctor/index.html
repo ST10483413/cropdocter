@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="CropDoctor — AI-powered plant disease detection. Upload a photo of your crop and get instant diagnosis with treatment recommendations." />
+  <title>CropDoctor — AI Plant Disease Detector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- ───── Header ───── -->
+  <header id="app-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🌿</span>
+        <span class="logo-text">Crop<strong>Doctor</strong></span>
+      </div>
+      <nav>
+        <span id="mode-badge" class="badge badge--hidden">DEMO MODE</span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ───── Hero ───── -->
+  <main>
+    <section id="hero" class="section hero">
+      <div class="hero-content">
+        <h1>Diagnose your crops<br /><span class="gradient-text">in seconds</span></h1>
+        <p class="subtitle">Upload a photo of your plant leaf and let our AI identify diseases instantly — with
+          treatment advice you can act on today.</p>
+
+        <!-- Upload area -->
+        <div id="upload-zone" class="upload-zone" tabindex="0" role="button" aria-label="Upload plant image">
+          <input type="file" id="file-input" accept="image/*" hidden />
+          <div class="upload-zone__idle" id="upload-idle">
+            <span class="upload-icon">📷</span>
+            <p>Drag &amp; drop an image here<br />or <strong>click to browse</strong></p>
+            <span class="upload-hint">JPG, PNG up to 10 MB</span>
+          </div>
+          <div class="upload-zone__preview hidden" id="upload-preview">
+            <img id="preview-img" alt="Uploaded leaf preview" />
+            <button id="clear-btn" class="btn btn--ghost" aria-label="Remove image">✕ Remove</button>
+          </div>
+        </div>
+
+        <button id="analyze-btn" class="btn btn--primary" disabled>
+          <span class="btn-label">Analyze Plant</span>
+          <span class="spinner hidden" id="spinner"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ───── Results ───── -->
+    <section id="results" class="section results hidden">
+      <div class="results-card glass-card">
+        <h2>Diagnosis Results</h2>
+
+        <div class="result-row">
+          <span class="result-label">Disease</span>
+          <span class="result-value" id="result-disease">—</span>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">Confidence</span>
+          <div class="confidence-bar-wrap">
+            <div class="confidence-bar" id="confidence-bar" style="--pct:0%"></div>
+            <span class="confidence-pct" id="confidence-pct">0%</span>
+          </div>
+        </div>
+
+        <div class="result-row">
+          <span class="result-label">Description</span>
+          <span class="result-value result-desc" id="result-description">—</span>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="treatment-section">
+          <h3>🩺 Recommended Treatment</h3>
+          <p id="result-treatment" class="treatment-text">—</p>
+        </div>
+
+        <button id="reset-btn" class="btn btn--secondary">Scan Another Plant</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ───── Footer ───── -->
+  <footer id="app-footer">
+    <p>&copy; 2026 CropDoctor &middot; AI‑Powered Plant Health</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
